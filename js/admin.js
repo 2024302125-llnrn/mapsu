@@ -78,7 +78,7 @@ async function createBuilding(data) {
     try {
         showLoading();
 
-        const res = await fetch('php/manage_buildings.php', {
+        const res = await fetch('api/manage_buildings.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -111,7 +111,7 @@ async function updateBuilding(data) {
     try {
         showLoading();
 
-        const res = await fetch('php/manage_buildings.php', {
+        const res = await fetch('api/manage_buildings.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -144,7 +144,7 @@ async function deleteBuilding(id) {
     try {
         showLoading();
 
-        const res = await fetch('php/manage_buildings.php', {
+        const res = await fetch('api/manage_buildings.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadFeedback() {
     try {
-        const response = await fetch('php/manage_feedback.php');
+        const response = await fetch('api/manage_feedback.php');
         const result = await response.json();
 
         if (!result.success) {
@@ -115,7 +115,7 @@ async function handleFeedbackUpdate(event) {
     };
 
     try {
-        const response = await fetch('php/manage_feedback.php', {
+        const response = await fetch('api/manage_feedback.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

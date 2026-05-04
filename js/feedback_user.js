@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showStatus('SUBMITTING FEEDBACK...', false);
 
         try {
-            const response = await fetch('php/manage_feedback.php', {
+            const response = await fetch('api/manage_feedback.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

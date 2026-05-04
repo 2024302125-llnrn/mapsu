@@ -152,7 +152,7 @@ function focusBuilding(buildingName) {
 
 async function loadBuildingsFromDB() {
     try {
-        const response = await fetch('php/get_buildings.php');
+        const response = await fetch('api/get_buildings.php');
         const data = await response.json();
         
         if (data.success && data.data) {

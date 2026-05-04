@@ -7,7 +7,7 @@ let translateX = 0;
 
 async function loadGraphDataFromDB() {
     try {
-        const response = await fetch('php/get_graph_data.php');
+        const response = await fetch('api/get_graph_data.php');
         const data = await response.json();
 
         if (data.success) {
