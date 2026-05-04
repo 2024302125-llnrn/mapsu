@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+    <base href="/mapsu/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maPSU</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="sidebar">
+    <div class="header-container">
+        <img src="assets/campus-logo.png" alt="PSU Logo" class="logo">
+        <h2>maPSU</h2>
+    </div>
+    
+    <hr>
+    
+    <div class="search-container">
+        <label for="searchBox">Quick Search (Name or Info)</label>
+        <input type="text" id="searchBox" placeholder="Type to find building..." onkeyup="handleSearch(this.value)">
+        <div id="searchDropdown" class="search-dropdown"></div>
+    </div>
+
+    <fieldset class="section">
+        <legend>Select as:</legend>
+        <div class="select-as-container">
+            <button type="button" class="btn-select start" onclick="setAsStart()">Starting Point</button>
+            <button type="button" class="btn-select dest" onclick="setAsDest()">Destination</button>
+        </div>
+    </fieldset>  
+
+    <div class="section">
+        <label for="startPoint">Select Starting Point</label>
+        <select id="startPoint">
+            <option value="">-- Choose Starting Gate/Building --</option>
+        </select>
+    </div>
+
+    <div class="section">
+        <label for="destSelect">Destination</label>
+        <select id="destSelect">
+            <option value="">-- Choose Destination --</option>
+        </select>
+        <button class="btn-route" onclick="showRoute()">NAVIGATE</button>
+        <button class="btn-reset" onclick="resetMap()">HOME</button>
+    </div>
+</div>
+
+<div id="infoPanel" class="info-panel">
+    <span class="info-close" onclick="hideInfoPanel()" aria-label="Close">&times;</span>
+    <img id="infoImage" src="" alt="Building Image">
+    <div class="info-content">
+        <h3 id="infoTitle"></h3>
+        <p id="infoDescription"></p>
+    </div>
+    <button id="streetViewBtn" class="street-view-btn" onclick="openStreetView()" data-tooltip="Street View">
+        <img src="assets/orbit.png" alt="Street View">
+    </button>
+</div>
+
+<div class="menu-container">
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">MENU</button>
+    <div class="menu-dropdown" id="menuDropdown">
+        <div onclick="location.href='feedback_user.html'">Submit a Feedback</div>
+        <div onclick="location.href='about.html'">About Developers</div>
+    </div>
+</div>
+
+<button id="openSheetBtn" onclick="toggleSheet()">☰</button>
+
+<div id="imageDisplayer" class="image-modal" style="display: none;">
+    <div class="image-modal-content">
+        <span class="image-modal-close" onclick="closeImageDisplayer()" aria-label="Close">&times;</span>
+        <img id="fullSizeImage" src="" alt="Building Image">
+    </div>
+</div>
+
+<div id="streetViewModal" class="street-view-modal" style="display:none;">
+    <span class="street-view-close" onclick="closeStreetView()">&times;</span>
+    <div id="streetViewContainer">
+        <img id="streetViewImage" src="" alt="Street View Panorama">
+    </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/data.js?v=4"></script>        
+<script src="js/map.js?v=4"></script>            
+<script src="js/navigation.js?v=4"></script>
+<script src="js/search.js?v=4"></script>   
+
+</body>
+</html>

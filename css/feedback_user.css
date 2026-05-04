@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                      url('assets/map_bg.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.feedback-card {
+    width: 90%;
+    max-width: 450px;
+    background-color: #ebebeb; 
+    padding: 35px;
+    border-radius: 12px;
+    color: #333;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo {
+    width: 55px;
+    margin-bottom: 8px;
+}
+
+.header h2 {
+    font-size: 20px;
+    color: #800000;
+    font-weight: 800;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+    color: #444;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    background-color: #d1d1d1; 
+    border: 1px solid #bcbcbc;
+    border-radius: 6px;
+    color: #222;
+    font-size: 13px;
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: #666;
+}
+
+select option {
+    background-color: #ebebeb;
+}
+
+.stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.stars input { display: none; }
+
+.stars label {
+    font-size: 26px;
+    color: #999;
+    cursor: pointer;
+    padding-right: 4px;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+    color: #f1c40f;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.send-btn, .back-btn {
+    width: 100%;
+    height: 45px; 
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+.send-btn {
+    background-color: #27ae60;
+    color: white;
+}
+
+.back-btn {
+    background-color: #838383;
+    color: white;
+}
+
+@media screen and (max-width: 480px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+        padding: 20px 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .feedback-card {
+        width: 100%;
+        max-width: none;
+        padding: 25px 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        order: 1;
+    }
+
+    #feedbackForm {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group {
+        order: 2;
+    }
+
+    .button-container {
+        order: 3;
+        margin-top: 15px;
+    }
+
+    .stars label {
+        font-size: 35px;
+        padding: 0 5px;
+    }
+
+    input, select, textarea {
+        font-size: 16px;
+    }
+
+    .send-btn, .back-btn {
+        height: 50px;
+    }
+}

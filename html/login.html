@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>\
+    <base href="/mapsu/">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="login-container">
+        <img src="assets/campus-logo.png" alt="PSU Logo" class="logo">
+
+        <form autocomplete="off">
+            <label>Email:</label>
+            <input type="email" id="email" autocomplete="off">
+
+            <label>Password:</label>
+            <input type="password" id="password" autocomplete="off">
+
+            <input type="text" style="display:none">
+            <input type="password" style="display:none">
+
+            <button type="submit" class="login-btn">LOG IN</button>
+        </form>
+    </div>
+
+    <div id="alertModal" class="modal" style="display:none;">
+    <div class="modal-content alert-box">
+        <h3 id="alertTitle">Notice</h3>
+        <p id="alertMessage"></p>
+        <button class="submit-btn" onclick="closeAlertModal()">OK</button>
+    </div>
+</div>
+    
+    <script src="js/login.js"></script>
+</body>
+</html>

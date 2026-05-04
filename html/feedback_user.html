@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/mapsu/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maPSU | Send Feedback</title>
+    <link rel="stylesheet" href="css/feedback_user.css">
+</head>
+<body>
+    <div class="feedback-card">
+        <div class="header">
+            <img src="assets/campus-logo.png" alt="PSU Logo" class="logo">
+            <h2>Send Feedback</h2>
+        </div>
+
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="feedbackName">Name (Optional):</label>
+                <input type="text" id="feedbackName" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="feedbackType">Feedback Type:</label>
+                <select id="feedbackType" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="suggestion">Suggestion</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="compliment">Compliment</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="feedbackMessage">Message:</label>
+                <textarea id="feedbackMessage" rows="4" placeholder="Please share your feedback here..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <span id="ratingLabel" style="display: block; font-size: 12px; margin-bottom: 4px; font-weight: bold; color: #444;">Rating:</span>
+                
+                <div class="stars" role="radiogroup" aria-labelledby="ratingLabel">
+                    <input type="radio" name="r" id="s5" aria-label="5 stars"><label for="s5">★</label>
+                    <input type="radio" name="r" id="s4" aria-label="4 stars"><label for="s4">★</label>
+                    <input type="radio" name="r" id="s3" aria-label="3 stars"><label for="s3">★</label>
+                    <input type="radio" name="r" id="s2" aria-label="2 stars"><label for="s2">★</label>
+                    <input type="radio" name="r" id="s1" aria-label="1 star"><label for="s1">★</label>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="send-btn" id="submitFeedbackBtn">SEND FEEDBACK</button>
+                <button type="button" class="back-btn" onclick="window.history.back()">BACK TO MAP</button>
+            </div>
+            <p id="feedbackStatusMessage" aria-live="polite"></p>
+        </form>
+    </div>
+    <script src="js/feedback_user.js"></script>
+</body>
+</html>

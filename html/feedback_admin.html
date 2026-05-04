@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/mapsu/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>maPSU Admin - Feedback Management</title>
+    <link rel="stylesheet" href="css/feedback_admin.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand-name">
+            <img src="assets/campus-logo.png" alt="Logo" class="sidebar-logo">
+            <h1>maPSU Admin</h1>
+        </div>
+        
+        <div class="stats-sidebar">
+            <div class="stat-card" onclick="filterByStatus('all')" style="cursor: pointer;">
+                <span class="label">Total Feedback</span>
+                <span class="value" id="total-feedback">0</span>
+            </div>
+            <div class="stat-card" onclick="filterByStatus('pending')" style="cursor: pointer;">
+                <span class="label">Pending Reports</span>
+                <span class="value" id="pending-feedback" style="color: #e67e22;">0</span>
+            </div>
+            <div class="stat-card" onclick="filterByStatus('resolved')" style="cursor: pointer;">
+                <span class="label">Resolved</span>
+                <span class="value" id="resolved-feedback" style="color: #27ae60;">0</span>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <button class="back-btn" onclick="window.location.href='admin.html'">Back to Map</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="top-nav">
+            <h2>Feedback Reports</h2>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name (Optional)</th>
+                        <th>Type</th>
+                        <th>Message</th>
+                        <th>Rating</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="feedback-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h3>Update Status</h3>
+            <form id="editFeedbackForm">
+                <input type="hidden" id="editFeedbackId">
+
+                <div class="form-group">
+                    <label for="editFeedbackStatus">Status</label>
+                    <select id="editFeedbackStatus">
+                        <option value="Pending">Pending</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" id="closeEditModal" class="cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    
+    <script src="js/feedback_admin.js"></script>
+</body>
+</html>

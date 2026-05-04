@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+    <base href="/mapsu/">
+    <title>maPSU Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<div id="sidebar">
+    <div class="header-container">
+        <img src="assets/campus-logo.png" alt="PSU Logo" class="logo">
+        <h2>maPSU Admin</h2>
+    </div>
+    <hr>
+    <div class="search-container">
+        <label for="searchBox">Quick Search</label>
+        <input type="text" id="searchBox" placeholder="Type to find a building..." onkeyup="handleSearch(this.value)">
+        <div id="searchDropdown" class="search-dropdown"></div>
+    </div>
+
+    <fieldset class="section">
+        <legend>Select as:</legend>
+        <div class="select-as-container">
+            <button type="button" class="btn-select start" onclick="setAsStart()">Starting Point</button>
+            <button type="button" class="btn-select dest" onclick="setAsDest()">Destination</button>
+        </div>
+    </fieldset>
+    
+    <div class="section">
+        <div class="nav-step">
+            <label for="startPoint">Select Starting Point</label>
+            <select id="startPoint">
+                <option value="">-- Choose Starting Gate/Building --</option>
+            </select>
+        </div>
+
+        <div class="nav-step">
+            <label for="destSelect">Destination</label>
+            <select id="destSelect">
+                <option value="">-- Choose Destination --</option>
+            </select>
+        </div>
+
+        <button class="btn-route" onclick="showRoute()">NAVIGATE</button>
+        <button class="btn-reset" onclick="resetMap()">HOME</button>
+    </div>
+</div>
+
+<div class="map-section">
+    <div class="top-bar">
+        <div class="admin-controls">
+            <button class="crud-btn" onclick="showCreateForm()" aria-label="Create Building">Create</button>
+            <button class="crud-btn" onclick="showUpdateForm()" aria-label="Update Building">Update</button>
+            <button class="crud-btn delete" onclick="showDeleteConfirm()" aria-label="Delete Building">Delete</button>
+        </div>
+        <div class="menu-container">
+            <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu">MENU</button>
+            <div class="menu-dropdown" id="menuDropdown">
+                <div onclick="location.href='feedback_admin.html'">Check Feedbacks</div>
+                <div onclick="logout()">Logout</div>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+</div>
+
+<button id="openSheetBtn" onclick="toggleSheet()">☰</button>
+
+<div id="buildingModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()" aria-label="Close">&times;</span>
+        <h3 id="modalTitle">Add New Building</h3>
+        <form id="buildingForm">
+            <input type="hidden" id="buildingId">
+            
+            <label for="buildingName">Building Name:</label>
+            <input type="text" id="buildingName" required>
+            
+            <label for="buildingX">X Coordinate:</label>
+            <input type="number" id="buildingX" step="any" required>
+            
+            <label for="buildingY">Y Coordinate:</label>
+            <input type="number" id="buildingY" step="any" required>
+            
+            <label for="buildingInfo">Description:</label>
+            <textarea id="buildingInfo" required></textarea>
+            
+            <button type="submit" class="submit-btn">SAVE</button>
+        </form>
+    </div>
+</div>
+
+<div id="infoPanel" class="info-panel">
+    <span class="info-close" onclick="hideInfoPanel()" aria-label="Close">&times;</span>
+    <img id="infoImage" src="" alt="Building Image">
+    <div class="info-content">
+        <h3 id="infoTitle"></h3>
+        <p id="infoDescription"></p>
+    </div>
+    <button id="streetViewBtn" class="street-view-btn" onclick="openStreetView()" data-tooltip="Street View">
+        <img src="assets/orbit.png" alt="Street View">
+    </button>
+</div>
+
+<div id="loadingOverlay" class="loading-overlay" style="display:none;" role="status" aria-live="polite">
+    <div class="spinner"></div>
+    <p>Processing...</p>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<div id="confirmModal" class="modal" style="display:none;">
+    <div class="modal-content confirm-box">
+        <h3>Confirm Deletion</h3>
+        <p id="confirmMessage">Are you sure you want to delete this building?</p>
+        <div class="modal-actions">
+            <button class="crud-btn delete" id="confirmDeleteBtn">Yes, Delete</button>
+            <button class="crud-btn" onclick="closeConfirmModal()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div id="imageDisplayer" class="image-modal" style="display: none;">
+    <div class="image-modal-content">
+        <span class="image-modal-close" onclick="closeImageDisplayer()" aria-label="Close">&times;</span>
+        <img id="fullSizeImage" src="" alt="Building Image">
+    </div>
+</div>
+
+<div id="streetViewModal" class="street-view-modal" style="display:none;">
+    <span class="street-view-close" onclick="closeStreetView()">&times;</span>
+    <div id="streetViewContainer">
+        <img id="streetViewImage" src="" alt="Street View Panorama">
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/data.js?v=4"></script>         
+<script src="js/map.js?v=4"></script>      
+<script src="js/navigation.js?v=4"></script>    
+<script src="js/search.js?v=4"></script>
+<script src="js/admin.js?v=4"></script>    
+</body>
+</html>
